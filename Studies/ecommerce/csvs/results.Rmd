@@ -1,0 +1,162 @@
+---
+title: "Clustering Results"
+author: "Dejvis Toptani"
+date: "2023-05-17"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(dplyr)
+library(knitr)
+
+dbscan = readr::read_csv('DBSCAN_data.csv')
+kmeans = readr::read_csv('KMeans_data.csv')
+SpectralClustering = readr::read_csv('SpectralClustering_data.csv')
+optics = readr::read_csv('OPTICS_data.csv')
+dbhd = readr::read_csv('DBHD_data.csv')
+meanshift = readr::read_csv('MeanShift_data.csv')
+snndpc = readr::read_csv('SNNDPC_data.csv')
+hdbscan = readr::read_csv('HDBSCAN_data.csv')
+SpectralACL = readr::read_csv('SpectralACL_data.csv')
+dbadv = readr::read_csv('DBADV_data.csv')
+dpc = readr::read_csv('DPC_data.csv')
+#lsdbc = readr::read_csv('LSDBC.csv')
+```
+
+Clustering of Ecommerce dataset.
+
+DBSCAN
+```{r, echo=FALSE}
+dbscan %>%
+  group_by(embedding) %>%
+  arrange(desc(NMI)) %>% 
+  slice_head(n = 3) %>%
+  ungroup %>%
+  mutate(across(where(is.numeric), ~ round(., 3))) %>%
+  kable
+
+```
+
+KMeans
+```{r, echo=FALSE}
+kmeans %>%
+  group_by(embedding) %>%
+  arrange(desc(NMI)) %>% 
+  slice_head(n = 3) %>%
+  ungroup %>%
+  mutate(across(where(is.numeric), ~ round(., 3))) %>%
+  kable
+
+```
+
+Spectral Clustering
+```{r, echo=FALSE}
+SpectralClustering %>%
+  group_by(embedding) %>%
+  arrange(desc(NMI)) %>% 
+  slice_head(n = 3) %>%
+  ungroup %>%
+  mutate(across(where(is.numeric), ~ round(., 3))) %>%
+  kable
+
+```
+
+OPTICS
+```{r, echo=FALSE}
+optics %>%
+  group_by(embedding) %>%
+  arrange(desc(NMI)) %>% 
+  slice_head(n = 3) %>%
+  ungroup %>%
+  mutate(across(where(is.numeric), ~ round(., 3))) %>%
+  kable
+
+```
+
+DBHD
+```{r, echo=FALSE}
+dbhd %>%
+  group_by(embedding) %>%
+  arrange(desc(NMI)) %>% 
+  slice_head(n = 3) %>%
+  ungroup %>%
+  mutate(across(where(is.numeric), ~ round(., 3))) %>%
+  kable
+
+```
+
+Meanshift
+```{r, echo=FALSE}
+meanshift %>%
+  group_by(embedding) %>%
+  arrange(desc(NMI)) %>% 
+  slice_head(n = 3) %>%
+  ungroup %>%
+  mutate(across(where(is.numeric), ~ round(., 3))) %>%
+  kable
+
+```
+
+SNN-DPC
+```{r, echo=FALSE}
+snndpc %>%
+  group_by(embedding) %>%
+  arrange(desc(NMI)) %>% 
+  slice_head(n = 3) %>%
+  ungroup %>%
+  mutate(across(where(is.numeric), ~ round(., 3))) %>%
+  kable
+
+```
+
+HDBSCAN
+```{r, echo=FALSE}
+hdbscan %>%
+  group_by(embedding) %>%
+  arrange(desc(NMI)) %>% 
+  slice_head(n = 3) %>%
+  ungroup %>%
+  mutate(across(where(is.numeric), ~ round(., 3))) %>%
+  kable
+
+```
+
+SpectralACL
+```{r, echo=FALSE}
+SpectralACL %>%
+  group_by(embedding) %>%
+  arrange(desc(NMI)) %>% 
+  slice_head(n = 3) %>%
+  ungroup %>%
+  mutate(across(where(is.numeric), ~ round(., 3))) %>%
+  kable
+
+```
+
+DBADV
+```{r, echo=FALSE}
+dbadv %>%
+  group_by(embedding) %>%
+  arrange(desc(NMI)) %>% 
+  slice_head(n = 3) %>%
+  ungroup %>%
+  mutate(across(where(is.numeric), ~ round(., 3))) %>%
+  kable
+
+```
+
+DPC
+```{r, echo=FALSE}
+dpc %>%
+  group_by(embedding) %>%
+  arrange(desc(NMI)) %>% 
+  slice_head(n = 3) %>%
+  ungroup %>%
+  mutate(across(where(is.numeric), ~ round(., 3))) %>%
+  kable
+
+```
